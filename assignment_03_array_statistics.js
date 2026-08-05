@@ -43,4 +43,68 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+const readline = require("readline-sync");
 
+function calculateSum(arr) {
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        sum = sum + arr[i];
+    }
+
+    return sum;
+}
+
+function calculateAverage(arr) {
+    let sum = calculateSum(arr);
+    let average = sum / arr.length;
+
+    return average;
+}
+
+function findMaximum(arr) {
+    let max = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+function findMinimum(arr) {
+    let min = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+
+    return min;
+}
+
+let n = parseInt(readline.question("How many numbers? "));
+
+if (n <= 0) {
+    console.log("Error: N must be a positive integer.");
+    process.exit();
+}
+
+let numbers = [];
+
+for (let i = 0; i < n; i++) {
+    let num = parseFloat(
+        readline.question("Enter number " + (i + 1) + ": ")
+    );
+
+    numbers.push(num);
+}
+
+console.log("\nResults:");
+console.log("Sum:", calculateSum(numbers));
+console.log("Average:", calculateAverage(numbers));
+console.log("Maximum:", findMaximum(numbers));
+console.log("Minimum:", findMinimum(numbers));
