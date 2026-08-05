@@ -53,5 +53,57 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+const readlineSync = require("readline-sync");
 
+function printFibonacci(n) {
+    let sequence = [];
+
+    let first = 0;
+    let second = 1;
+
+    for (let i = 0; i < n; i++) {
+        sequence.push(first);
+
+        let next = first + second;
+        first = second;
+        second = next;
+    }
+
+    console.log("Fibonacci sequence:", sequence.join(" "));
+}
+
+function isFibonacci(number) {
+    let first = 0;
+    let second = 1;
+
+    if (number === 0) {
+        return true;
+    }
+
+    while (first < number) {
+        let next = first + second;
+        first = second;
+        second = next;
+    }
+
+    return first === number;
+}
+
+let n = parseInt(readlineSync.question("How many terms? "));
+
+if (n <= 0 || isNaN(n)) {
+    console.log("Error: N must be a positive integer.");
+} else {
+    printFibonacci(n);
+}
+
+let number = parseInt(
+    readlineSync.question("\nEnter a number to check: ")
+);
+
+if (isFibonacci(number)) {
+    console.log(number + " is a Fibonacci number.");
+} else {
+    console.log(number + " is NOT a Fibonacci number.");
+}
 
